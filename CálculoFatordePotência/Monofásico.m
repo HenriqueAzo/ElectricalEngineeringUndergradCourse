@@ -22,3 +22,16 @@ Saídas (na ordem):
 
 V=input("insira o valor da tensão monofásica (forma retangular): ")
 Z=input("insita o valor da carga (forma retangular): ")
+
+w=2*pi*60;
+
+#definindo corrente, theta inicial e FP inicial
+I=V/Z
+conjI=conj(I)
+theta=atan(imag(I)/real(I))
+FP=cos(theta)
+
+#definir potência inicial
+S=(V*conj(I))/2
+
+#corrigindo FP para 0.92
