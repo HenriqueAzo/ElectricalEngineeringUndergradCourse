@@ -30,6 +30,10 @@ if(real(Z)==0)
   return;
   endif
 #
+
+caso=input("\n\nInsira: \n(1) para realizar os calculos sobre um circuito monofasico;\n(2) para realizar os calculos sobre um circuito trifasico.\n");
+
+if(caso==1)
 #definindo corrente, w
 fprintf("\nCorrente inicial: ");
 I=V/Z
@@ -51,3 +55,5 @@ endwhile
 #fórmula para FP=0.92
 fprintf("\n\nCalculando C: ");
 C=(real(S)/((V.^2)*w))*(tan(acos(FP))-tan(acos(FPDesejado)))
+endif
+#fim do caso monofasico
