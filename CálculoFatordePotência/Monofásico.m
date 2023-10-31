@@ -28,12 +28,14 @@ Z=input("\n insira o valor da carga (forma retangular): ");
 if(real(Z)==0)
   fprintf("\n\nO circuito consiste apenas de cargas reativas. \nO fator de potencia permanece zero, independente de correcoes com outras cargas reativas.\n\n")
   return;
-  endif
+endif
 #
-
-caso=input("\n\nInsira: \n(1) para realizar os calculos sobre um circuito monofasico;\n(2) para realizar os calculos sobre um circuito trifasico.\n");
-
-if(caso==1)
+if(imag(Z)==0)
+fprintf("\n\nO circuito, sendo puramente resistivo, possui o FP igual a 1. Nenhuma correcao se faz necessaria.")
+return;
+endif
+#
+#
 #definindo corrente, w
 fprintf("\nCorrente inicial: ");
 I=V/Z
@@ -55,5 +57,3 @@ endwhile
 #fórmula para FP=0.92
 fprintf("\n\nCalculando C: ");
 C=(real(S)/((V.^2)*w))*(tan(acos(FP))-tan(acos(FPDesejado)))
-endif
-#fim do caso monofasico
