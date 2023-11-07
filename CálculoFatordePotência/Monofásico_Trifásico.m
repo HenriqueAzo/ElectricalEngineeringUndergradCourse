@@ -42,7 +42,7 @@ while(!xor(escolha==1,escolha==2))
 endwhile
 #
 
-w=2*pi*60;
+w=2*pi*60
 
 #correcao de sistema monofasico
 if(escolha==1)
@@ -73,7 +73,7 @@ if(escolha==1)
   Q=imag(S)
 
     #Plotando o triangulo de potencia atual
-  subplot(3,3,1);
+  subplot(2,2,1);
   hold on;
   grid on;
     #potencia atual
@@ -83,13 +83,13 @@ if(escolha==1)
 
   hold off;
 
-    #definir FP inicial
+    #definir FP atual
   fprintf("\nFator de potencia atual: ");
   FP=cos(atan(imag(S)/real(S)))
 
 
     #fasores de V e I atuais
-  subplot(3,3,2);
+  subplot(2,2,2);
   hold on;
   grid on;
   #limitando grafico dos fasores
@@ -108,17 +108,6 @@ if(escolha==1)
 
   hold off;
 
-  #dominio do tempo
-  t=0:0.001:0.2;
-  subplot(3,3,3);
-  fV=V*sin(w*t);
-  fI=modi*sin((w*t)-FP);
-  plot(t,fV);
-  plot(t,fI);
-
-
-
-
   FPDesejado=input("\nPara que que Fator de potencia se deseja corrigir o circuito atual?\n")
   #checando se 0<=FP<=1
   while(FPDesejado>1 || FPDesejado<0)
@@ -126,15 +115,70 @@ if(escolha==1)
   endwhile
   #
 
-  #fórmula para FP=0.92
+    #fórmula para capacitor do FP
   fprintf("\n\nCalculando C: ");
   C=(real(S)/((V.^2)*w))*(tan(acos(FP))-tan(acos(FPDesejado)))
+
+    #calculando nova potencia apos correcao
+  Sc=complex(0,-1)*w*C*pow2(V)
+  S=S+Sc
+  P=real(S)
+  Q=imag(S)
+
+    #Plotando o triangulo de potencia apos correcao
+  subplot(2,2,3);
+  hold on;
+  grid on;
+    #potencia atual
+  line([0 P], [0 0], "linestyle", "-", "color", "b")
+  line([P P], [0 abs(Q)], "linestyle", "-", "color", "r")
+  line([0 P], [0 abs(Q)], "linestyle", "-", "color", "g")
+
+  hold off;
+
+    #definir FP atual
+  fprintf("\nFator de potencia atual: ");
+  FP=cos(atan(imag(S)/real(S)))
+
+    #definindo nova corrente
+  Zc=1/(complex(0,1)*w*C)
+  Z=1/((1/Z)+(1/Zc))
+  I=V/Z
+
+    #fasores de V e I atuais
+  subplot(2,2,4);
+  hold on;
+  grid on;
+    #limitando grafico dos fasores
+  modi=mod(real(I),imag(I));
+  if(modi<V)
+    xlim([-V-(V*0.08),V+(V*0.08)]);
+    ylim([-V-(V*0.08),V+(V*0.08)]);
+  endif
+  if(modi>V) #AINDA FALTA CORRIGIR ISSO
+    xlim([-modi-(modi*0.08),modi+(modi*0.08)]);
+    ylim([-modi-(modi*0.08),modi+(modi*0.08)]);
+  endif
+    #fasores
+  compass(V,0);
+  compass(real(I),imag(I));
+
 endif
 #
 
 
 #correcao de sistema trifasico
 if(escolha==2)
+  V=input("insira o valor da tensão monofásica: ");
+  Zr=input("\n insira o primeiro valor da carga (parte real, unidade ohm): ");
+  Zi=input("\n insira o primeiro valor da carga (parte imaginaria, unidade ohm): ");
+  Z=complex(Zr,Zi)
 
+  if(real(Z)==0)
+    fprintf("\n\nO circuito consiste apenas de cargas reativas. \nO fator de potencia permanece zero, independente de correcoes com outras cargas reativas.\n\n")
+    return;
+  endif
+  #
+  I=V/Z
 endif
 #
