@@ -1,4 +1,4 @@
-this is the directory meant to store any works related with the "Dispositivos Eletrônicos" course, in UFBA.
+this is the directory meant to store any work related to "Dispositivos Eletrônicos" course, in UFBA.
 
 - informações sobre uso de transistor "par darlington": https://blog.raisa.com.br/par-darlington-de-transistores/
 
