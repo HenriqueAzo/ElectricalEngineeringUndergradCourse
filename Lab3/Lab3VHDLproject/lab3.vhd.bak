@@ -1,0 +1,13 @@
+---lab3 project summary
+-- inputs:
+--		clk 50mhz in
+--		mux para seletor de duty cycle
+--
+--	interno:
+--		divisor de frequência (50mhz papra 1hz)
+--		funçao para output 7 segmentos
+--
+--	outputs:
+--		dois 7seg (dezena, unidade)
+--		1 LED que pisca a cada 5 pulsos de 1hz
+--		onda quadrada de 1hz com duty cycle selecionado pelo mux inicial
