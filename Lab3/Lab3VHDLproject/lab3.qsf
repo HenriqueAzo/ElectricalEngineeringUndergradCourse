@@ -51,8 +51,41 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
-set_location_assignment PIN_N25 -to B0
-set_location_assignment PIN_N26 -to B1
-set_location_assignment PIN_P25 -to B2
-set_location_assignment PIN_AE14 -to B3
+set_location_assignment PIN_AE22 -to B0
+set_location_assignment PIN_AF22 -to B1
+set_location_assignment PIN_AF10 -to Ax
+set_location_assignment PIN_AB12 -to Bx
+set_location_assignment PIN_AC12 -to Cx
+set_location_assignment PIN_AD11 -to Dx
+set_location_assignment PIN_AE11 -to Ex
+set_location_assignment PIN_V14 -to Fx
+set_location_assignment PIN_V13 -to Gx
+set_location_assignment PIN_V20 -to A2x
+set_location_assignment PIN_V21 -to B2x
+set_location_assignment PIN_W21 -to C2x
+set_location_assignment PIN_Y22 -to D2x
+set_location_assignment PIN_AA24 -to E2x
+set_location_assignment PIN_AA23 -to F2x
+set_location_assignment PIN_AB24 -to G2x
+set_location_assignment PIN_N2 -to CLK
+set_location_assignment PIN_AA20 -to CLK1
+set_location_assignment PIN_Y12 -to CYCLE5
+set_location_assignment PIN_P25 -to RST
+set_location_assignment PIN_AC21 -to B1[3]
+set_location_assignment PIN_AD21 -to B1[2]
+set_location_assignment PIN_AB21 -to B0[2]
+set_location_assignment PIN_AC22 -to B0[3]
+set_location_assignment PIN_AD22 -to B1[0]
+set_location_assignment PIN_AD23 -to B1[1]
+set_location_assignment PIN_AF23 -to B0[1]
+set_location_assignment PIN_U4 -to M[0]
+set_location_assignment PIN_V1 -to M[1]
+set_location_assignment PIN_V2 -to M[2]
+set_location_assignment PIN_AE23 -to B0[0]
+set_location_assignment PIN_P2 -to SELHZ[0]
+set_location_assignment PIN_T7 -to SELHZ[1]
+set_location_assignment PIN_U3 -to SELHZ[2]
+set_location_assignment PIN_AD15 -to SELHZOUTPUT[0]
+set_location_assignment PIN_AE15 -to SELHZOUTPUT[1]
+set_location_assignment PIN_AF13 -to SELHZOUTPUT[2]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
